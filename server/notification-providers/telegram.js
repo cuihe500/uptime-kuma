@@ -9,7 +9,10 @@ class Telegram extends NotificationProvider {
      */
     async send(notification, msg, monitorJSON = null, heartbeatJSON = null) {
         const okMsg = "Sent Successfully.";
-        const url = "https://api.telegram.org";
+//     const url = "https://api.telegram.org";
+        // In order to solve the problem of being unable to access the telegram api in China, 
+        // the address was changed to the self-built cloudflare proxy address.
+        const url = "https://api.telegram.thankseveryone.top";
 
         try {
             let params = {

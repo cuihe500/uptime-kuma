@@ -4,7 +4,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/louislam/uptime-kuma.git"
+        "url": "https://git.thankseveryone.top/cuihe500/update-kuma.git"
     },
     "engines": {
         "node": "18 || >= 20.4.0"
@@ -34,12 +34,12 @@
         "playwright-show-report": "playwright show-report ./private/playwright-report",
         "tsc": "tsc",
         "vite-preview-dist": "vite preview --host --config ./config/vite.config.js",
-        "build-docker-base": "docker buildx build -f docker/debian-base.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/uptime-kuma:base2 --target base2 . --push",
-        "build-docker-base-slim": "docker buildx build -f docker/debian-base.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/uptime-kuma:base2-slim --target base2-slim . --push",
-        "build-docker-builder-go": "docker buildx build -f docker/builder-go.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/uptime-kuma:builder-go . --push",
-        "build-docker-simple": "docker buildx build -f docker/simple.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/uptime-kuma:simple . --push",
-        "build-docker-nightly-local": "npm run build && docker build -f docker/dockerfile -t louislam/uptime-kuma:nightly2 --target nightly .",
-        "build-docker-pr-test": "docker buildx build -f docker/dockerfile --platform linux/amd64,linux/arm64 -t louislam/uptime-kuma:pr-test2 --target pr-test2 . --push",
+        "build-docker-base": "sudo docker buildx build -f docker/debian-base.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t cuihe500/uptime-kuma:base2 --target base2 . --push",
+        "build-docker-base-slim": "sudo docker buildx build -f docker/debian-base.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t cuihe500/uptime-kuma:base2-slim --target base2-slim . --push",
+        "build-docker-builder-go": "sudo docker buildx build -f docker/builder-go.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t cuihe500/uptime-kuma:builder-go . --push",
+        "build-docker-simple": "sudo docker buildx build -f docker/simple.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t cuihe500/uptime-kuma:simple . --push",
+        "build-docker-nightly-local": "npm run build && sudo docker build -f docker/dockerfile -t cuihe500/uptime-kuma:nightly2 --target nightly .",
+        "build-docker-pr-test": "sudo docker buildx build -f docker/dockerfile --platform linux/amd64,linux/arm64 -t cuihe500/uptime-kuma:pr-test2 --target pr-test2 . --push",
         "upload-artifacts": "node extra/release/upload-artifacts.mjs",
         "upload-artifacts-beta": "node extra/release/upload-artifacts-beta.mjs",
         "setup": "git checkout 1.23.15 && npm ci --production && npm run download-dist",
@@ -50,9 +50,9 @@
         "remove-2fa": "node extra/remove-2fa.js",
         "simple-dns-server": "node extra/simple-dns-server.js",
         "simple-mqtt-server": "node extra/simple-mqtt-server.js",
-        "simple-mongo": "docker run --rm -p 27017:27017 mongo",
-        "simple-postgres": "docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres",
-        "simple-mariadb": "docker run --rm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mariadb# mariadb",
+        "simple-mongo": "sudo docker run --rm -p 27017:27017 mongo",
+        "simple-postgres": "sudo docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres",
+        "simple-mariadb": "sudo docker run --rm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mariadb# mariadb",
         "update-language-files": "cd extra/update-language-files && node index.js && cross-env-shell eslint ../../src/languages/$npm_config_language.js --fix",
         "release-final": "node ./extra/release/final.mjs",
         "release-beta": "node ./extra/release/beta.mjs",
@@ -63,8 +63,8 @@
         "build-healthcheck-armv7": "cross-env GOOS=linux GOARCH=arm GOARM=7 go build -x -o ./extra/healthcheck-armv7 ./extra/healthcheck.go",
         "deploy-demo-server": "node extra/deploy-demo-server.js",
         "sort-contributors": "node extra/sort-contributors.js",
-        "quick-run-nightly": "docker run --rm --env NODE_ENV=development -p 3001:3001 louislam/uptime-kuma:nightly2",
-        "start-dev-container": "cd docker && docker-compose -f docker-compose-dev.yml up --force-recreate",
+        "quick-run-nightly": "sudo docker run --rm --env NODE_ENV=development -p 3001:3001 cuihe500/uptime-kuma:nightly2",
+        "start-dev-container": "cd docker && sudo docker-compose -f docker-compose-dev.yml up --force-recreate",
         "rebase-pr-to-1.23.X": "node extra/rebase-pr.js 1.23.X",
         "reset-migrate-aggregate-table-state": "node extra/reset-migrate-aggregate-table-state.js"
     },

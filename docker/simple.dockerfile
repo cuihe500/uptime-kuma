@@ -1,0 +1,12 @@
+FROM alpine AS builder
+RUN apk add --no-cache nodejs npm git curl
+RUN npm install npm -g
+RUN adduser -D app
+USER app
+WORKDIR /home/app
+# RUN git clone https://github.com/cuihe500/uptime-kuma.git
+RUN git clone https://gitproxy.eaip.top/https://github.com/cuihe500/uptime-kuma.git
+WORKDIR /home/app/uptime-kuma
+RUN npm run setup
+EXPOSE 3001
+CMD ["node", "server/server.js"]
